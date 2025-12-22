@@ -17,8 +17,8 @@ const workerConfig: WorkerConfig = {
   monitors: [
     // Example HTTP Monitor
     {
-      id: 'foam_auth_monitor',
-      name: 'Auth API',
+      id: 'foam_auth_monitor_prod',
+      name: 'Production Auth API',
       method: 'GET',
       target: 'https://auth.foam-app.com/api/healthcheck',
       tooltip: '',
@@ -27,18 +27,18 @@ const workerConfig: WorkerConfig = {
       headers: {
         'User-Agent': 'Uptimeflare',
       },
-      // [OPTIONAL] body to be sent (require POST/PUT/PATCH method)
-      // body: 'Hello, world!',
-      // [OPTIONAL] if specified, the response must contains the keyword to be considered as operational.
-      // responseKeyword: 'success',
-      // [OPTIONAL] if specified, the response must NOT contains the keyword to be considered as operational.
-      // responseForbiddenKeyword: 'bad gateway',
-      // [OPTIONAL] if specified, will call the check proxy to check the monitor, mainly for geo-specific checks
-      // refer to docs https://github.com/lyc8503/UptimeFlare/wiki/Check-proxy-setup before setting this value
-      // currently supports `worker://`, `globalping://` and `http(s)://` proxies
-      // checkProxy: 'worker://weur',
-      // [OPTIONAL] if true, the check will fallback to local if the specified proxy is down
-      // checkProxyFallback: true,
+    },
+    {
+      id: 'foam_auth_monitor_staging',
+      name: 'Staging Auth API',
+      method: 'GET',
+      target: 'https://auth-staging.foam-app.com/api/healthcheck',
+      tooltip: '',
+      expectedCodes: [200],
+      timeout: 10000,
+      headers: {
+        'User-Agent': 'Uptimeflare',
+      },
     },
     {
       id: 'foam_web_monitor',
