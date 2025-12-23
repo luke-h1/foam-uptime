@@ -15,7 +15,6 @@ const pageConfig: PageConfig = {
 
 const workerConfig: WorkerConfig = {
   monitors: [
-    // Example HTTP Monitor
     {
       id: 'foam_auth_monitor_prod',
       name: 'Production Auth API',
@@ -35,7 +34,7 @@ const workerConfig: WorkerConfig = {
       target: 'https://auth-staging.foam-app.com/api/healthcheck',
       tooltip: '',
       expectedCodes: [200],
-      timeout: 10000,
+      timeout: 25000,
       headers: {
         'User-Agent': 'Uptimeflare',
       },
@@ -47,7 +46,7 @@ const workerConfig: WorkerConfig = {
       target: 'https://foam-app.com',
       tooltip: '',
       expectedCodes: [200],
-      timeout: 10000,
+      timeout: 25000,
       headers: {
         'User-Agent': 'Uptimeflare',
       },
